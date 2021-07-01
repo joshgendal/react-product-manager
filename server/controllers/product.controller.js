@@ -23,7 +23,14 @@ const getAllProducts = (req, res) => {
     .catch((err) => console.log(err));
 };
 
+const getProductById = (req, res) => {
+  Product.find({ _id: req.params.productId })
+    .then((query) => res.json({ product: query }))
+    .catch((err) => console.log(err));
+};
+
 module.exports = {
   createProduct,
   getAllProducts,
+  getProductById,
 };

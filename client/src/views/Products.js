@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import axios from "axios";
+import { Link } from "@reach/router";
 
 const Products = (props) => {
   console.log("PRODUCTS RENDER");
@@ -17,7 +18,8 @@ const Products = (props) => {
     <div>
       {products.map((product, index) => (
         <div key={index}>
-          <a href="/nowhere">{product.title}</a>
+          {/* <Product productInfo={product} /> */}
+          <Link to={`/product/${product._id}`}>{product.title}</Link>
         </div>
       ))}
     </div>
