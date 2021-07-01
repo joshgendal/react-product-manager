@@ -1,13 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
-import Products from "./Products";
-const Main = () => {
-  console.log("main rendered");
-  const [formSubmitted, setFormSubmitted] = useState(false);
+const Form = (props) => {
+  console.log("form rendered");
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
-  const [products, setProducts] = useState([]);
+  const { formSubmitted, setFormSubmitted } = props;
   const onSubmitHandler = (e) => {
     e.preventDefault();
     axios
@@ -19,23 +17,10 @@ const Main = () => {
       .then((res) => {
         console.log("SUCCESS");
         console.log(res);
-        if (formSubmitted === false) {
-          setFormSubmitted(true);
-        } else if (formSubmitted === true) {
-          setFormSubmitted(false);
-        }
+        !formSubmitted ? setFormSubmitted(true) : setFormSubmitted(false);
       })
       .catch((err) => console.log(err));
   };
-  // const getProducts () => {
-  //   axios
-  //     .get("http://localhost:8000/api/products")
-  //     .then((res) => {
-  //       console.log(res.data);
-  //       setProducts(res.data);
-  //     })
-  //     .catch((err) => console.log(err));
-  // }
 
   return (
     <>
@@ -66,13 +51,13 @@ const Main = () => {
         </div>
         <button type="submit">Submit</button>
       </form>
-      <Products
+      {/* <Products
         products={products}
         setProducts={setProducts}
         formSubmitted={formSubmitted}
-      />
+      /> */}
     </>
   );
 };
 
-export default Main;
+export default Form;

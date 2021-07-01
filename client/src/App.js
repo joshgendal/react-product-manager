@@ -1,11 +1,15 @@
-import logo from "./logo.svg";
+import React, { useState } from "react";
 import "./App.css";
-import Main from "./views/Main";
+import Form from "./views/Form";
+import Products from "./views/Products";
 
 function App() {
+  const [formSubmitted, setFormSubmitted] = useState(false);
+  const [products, setProducts] = useState([]);
   return (
     <div className="App">
-      <Main />
+      <Form setFormSubmitted={setFormSubmitted} />
+      <Products products={products} setProducts={setProducts} formSubmitted />
     </div>
   );
 }

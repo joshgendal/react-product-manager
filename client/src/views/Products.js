@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
 
 const Products = (props) => {
@@ -17,7 +17,7 @@ const Products = (props) => {
     <div>
       {products.map((product, index) => (
         <div key={index}>
-          <a href="">{product.title}</a>
+          <a href="/nowhere">{product.title}</a>
         </div>
       ))}
     </div>
